@@ -1,9 +1,11 @@
+require('dotenv').config();
 require('../config/db');
 const { Exercise } = require('../models/mongo');
 const seed = require('./seed');
 
 const main = async () => {
   await Exercise.collection.drop();
+  console.log('>> Clean collection');
   await Exercise.insertMany(seed.exercises);
 };
 

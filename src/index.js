@@ -1,5 +1,6 @@
-const express = require('express');
+require('dotenv').config();
 require('./config/db');
+const express = require('express');
 const exercisesRouter = require('./routes/Exercises');
 
 const app = express();
@@ -15,7 +16,7 @@ app.use((error, req, res) => {
   res.status(500).json({ data: 'Internal Server Error' });
 });
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`>> Server running on: http://localhost:${PORT}`);
